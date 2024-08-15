@@ -53,7 +53,7 @@ function hit(e) {
     console.log(e)
     if (!e.isTrusted) return;
     tally++
-    this.parentNode.classList.remove("up");
+    e.target.parentNode.classList.remove("up");
     scoreCount.textContent = tally;
 }
 
