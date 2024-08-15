@@ -63,6 +63,7 @@ h1 {
     display: flex;
     flex-wrap: wrap;
     margin: 0 auto;
+    margin-top: 10%;
 }
 
 .hole {
