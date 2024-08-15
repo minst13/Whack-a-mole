@@ -1,12 +1,14 @@
 const startGame = document.getElementById("start");
 
-
+let countDown = document.querySelector("#gameTimerDisplay");
 const holes = document.querySelectorAll(".hole");
 const moles = document.querySelectorAll(".mole");
 const scoreCount = document.querySelector(".score");
 let lastHole;
 let tally = 0;
 let timeUp = false;
+let gameTimer;
+let docTimer;
 
 
 function randTime(min, max) {
@@ -25,7 +27,7 @@ function randHole(holes) {
 }
 
 function showMole() {
-    const time = randTime(250, 850);
+    const time = randTime(250, 1000);
     const hole = randHole(holes);
     console.log(time, hole)
     hole.classList.add("moleUp");
@@ -46,7 +48,8 @@ function gameStart() {
     timeUp = false;
     tally = 0;
     showMole();
-    setTimeout(() => timeUp = true, 15000)
+    playTime(20);
+    setTimeout(() => timeUp = true, 20000)
 }
 
 function hit(e) {
@@ -59,4 +62,29 @@ function hit(e) {
 
 moles.forEach(mole => mole.addEventListener('click', hit));
 
+
+function playTime(seconds) {
+    const now = Date.now();
+    const then = now + seconds * 1000;
+    timeLeftF(seconds);
+
+
+    gameTimer = setInterval(() => {
+        const timeLeft = Math.round((then - Date.now()) / 1000);
+        if (timeLeft < 0) {
+            clearInterval(gameTimer);
+            countDown.textContent = "Time Is Up!"
+            return;
+        }
+        timeLeftF(timeLeft);
+    }, 1000)
+}
+
+
+function timeLeftF(seconds) {
+    const remaningSeconds = Math.floor(seconds % 60);
+    const showTimer = `${remaningSeconds}`;
+    countDown.textContent = showTimer;
+
+}
 
