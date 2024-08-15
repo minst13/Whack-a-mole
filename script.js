@@ -80,11 +80,9 @@ function playTime(seconds) {
     }, 1000)
 }
 
-
 function timeLeftF(seconds) {
     const remaningSeconds = Math.floor(seconds % 60);
     const showTimer = `${remaningSeconds}`;
     countDown.textContent = showTimer;
-
 }
 
