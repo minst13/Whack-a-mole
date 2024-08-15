@@ -25,7 +25,7 @@ function randHole(holes) {
 }
 
 function showMole() {
-    const time = randTime(250, 1000);
+    const time = randTime(250, 850);
     const hole = randHole(holes);
     console.log(time, hole)
     hole.classList.add("moleUp");
@@ -46,7 +46,7 @@ function gameStart() {
     timeUp = false;
     tally = 0;
     showMole();
-    setTimeout(() => timeUp = true, 10000)
+    setTimeout(() => timeUp = true, 15000)
 }
 
 function hit(e) {
@@ -60,10 +60,3 @@ function hit(e) {
 moles.forEach(mole => mole.addEventListener('click', hit));
 
 
-function gameStart() {
-    scoreCount.innerText = 0;
-    timeUp = false;
-    tally = 0;
-    showMole();
-    setTimeout(() => timeUp = true, 10000)
-}
