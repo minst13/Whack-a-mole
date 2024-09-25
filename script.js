@@ -71,7 +71,7 @@ function playTime(seconds) {
 
     gameTimer = setInterval(() => {
         const timeLeft = Math.round((then - Date.now()) / 1000);
-        if (timeLeft < 0) {
+        if (timeLeft <= 0) {
             clearInterval(gameTimer);
             countDown.textContent = "Time Is Up!"
             return;
@@ -83,6 +83,7 @@ function playTime(seconds) {
 function timeLeftF(seconds) {
     const remaningSeconds = Math.floor(seconds % 60);
     const showTimer = `${remaningSeconds}`;
-    countDown.textContent = showTimer;
-}
 
+
+    return remaningSeconds === 1 ? countDown.textContent = showTimer + " Second" : countDown.textContent = showTimer + " Seconds";
+}
